@@ -315,11 +315,11 @@ public function select_wpquery($name, $label, $dbval = null, $req = null, $desc 
 <?php  }
 /* clean a string */
 private function clean($str) {
-    // Remove all characters except A-Z, a-z, 0-9
+    // Remove all characters except A-Z, a-z, 0-9 and -_
     $str = preg_replace('/[^A-Za-z0-9 -_]/', ' ', $str);
     // Replace sequences of spaces 
-    $str = preg_replace('/  */', ' ', $str);
-    $str = preg_replace('/-/', ' ', $str);
+    // $str = preg_replace('/  */', ' ', $str);
+    // $str = preg_replace('/-/', ' ', $str);
     $str = preg_replace('/_/', ' ', $str);
     return $str;
 }

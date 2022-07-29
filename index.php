@@ -12,7 +12,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                <h1 class="text-center">SignUp</h1>
+                <h1 class="text-center">FormBuilder</h1>
 
 <form name="SignUp" id="SignUp" method="post">
 <?php $form_builder = new FormBuilder();?>
@@ -23,41 +23,41 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
                 </div>
             </div>
-        </div>
-        <div class="container">
+        </div> -->
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
                 </div>
             </div>
-        </div>
-        <div class="container">
+        </div> -->
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
                 </div>
             </div>
-        </div>
-        <div class="container">
+        </div> -->
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
                 </div>
             </div>
-        </div>
-        <div class="container">
+        </div> -->
+        <!-- <div class="container">
             <div class="row">
                 <div class="col-md-12">
 
                 </div>
             </div>
-        </div>
+        </div> -->
 
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
