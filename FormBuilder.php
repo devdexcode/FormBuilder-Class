@@ -25,7 +25,6 @@ class FormBuilder
     //     'label_col' => '',
     //     'label_col_class' => '',
     //     'label_position' => '',
-    //     'is_bs4' => '',
     //     'description_exists' => '',
     //     'description_class' => '',
     //     'response_div_exists' => '',
@@ -43,12 +42,14 @@ class FormBuilder
      * @return [HTML: With or without container and label and description]
      */
     public function field($args)
-    {    
+    {   
+       
         foreach($args as $k => $v) {
             $$k = $v;
         }
         $container_exists_options = array('yes',1,'y','true');
 
+        
         $types      = array('text');
 
 
@@ -72,11 +73,11 @@ class FormBuilder
         <?php if(in_array($container_exists,$container_exists_options)):?>
             <div class="form-group row <?php echo !empty($container_class) ? $container_class :'';?>">
         <?php endif;?>
-        <?php if(@$no_label == "" || empty(@$no_label)){//if label exists
+        <?php if(!isset($no_label) || $no_label == "" || empty($no_label)){//if label exists
           
-            if($label_position == "" || $label_position =="top"  || $label_position ==1 || $label_position != 0){
+            if(@$label_position =="top" || @$label_position ==="" || null === @$label_position){
                 include('components/label.php');
-            }elseif($label_position != "" || $label_position == "left" || $label_position == "side"){
+            }elseif(@$label_position != "" || @$label_position == "left" || @$label_position == "side"){
                 include('components/label-left.php');
             }
 
@@ -115,5 +116,10 @@ private function make_label($str) {
     $str = preg_replace('/-/', ' ', $str);
     $str = preg_replace('/_/', ' ', $str);
     return $str;
+}
+private function is_not_empty($str){
+    if(isset($str) || $str !== null || $str != "" || $str ==1 || $str != 0){
+        return true;
+    }
 }
 }

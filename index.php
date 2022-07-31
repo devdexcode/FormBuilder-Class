@@ -24,7 +24,6 @@
     'required'=>1,
     'label_col'=>4,
     'input_col'=>8,
-    'label_position'=>'side',
     'type'=>'text',
     ));
 
@@ -33,7 +32,7 @@
         'required'=>1,
         'label_col'=>4,
         'input_col'=>8,
-        'label_position'=>'side',
+        'label_position'=>'top',
         'id'=>'user_email'
         ));
         $form_builder->field(array(
@@ -47,11 +46,10 @@
             ));
             $form_builder->field(array(
                 'container_exists'=>'yes', 
-                'name'=>'',
+                'name'=>'Age',
                 'required'=>1,
-                'label_col'=>4,
-                'input_col'=>8,
-                'label_position'=>'side',
+                'label_position'=>0,
+                'no_label'=>'yes',
                 ));?>
 
     <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
