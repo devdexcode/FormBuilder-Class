@@ -20,7 +20,7 @@
 <?php $form_builder = new FormBuilder();?>
 <?php $form_builder->field(array(
     'container_exists'=>'yes', 
-    'label'=>'Full Name ',
+    'label'=>'Full Name',
     'required'=>1,
     'label_col'=>4,
     'input_col'=>8,

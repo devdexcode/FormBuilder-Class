@@ -1,6 +1,5 @@
-<div class="col-md-<?=(@$label_col == "" ? '4' : @$label_col);?> <?php echo !empty(@$label_col_class) ? @$label_col_class :'';?>">
-    <label class="control-label <?php echo $args['label_position']; ?> 
-        <?php echo !empty($label_class) ? $label_class: ''; ?>" for="<?php echo $the_id;?>">
+<div class="col-md-<?=(@$label_col == "" ? '4' : @$label_col);?> label_col <?php echo $the_name;?>_label_col">
+    <label class="control-label <?php echo $this->is_not_empty(@$label_position) ? $label_position: '';?> label <?=$the_name;?>_label" for="<?php echo $the_id;?>">
             <?=(@$the_label);?>:
         <?=(isset($required) ? '<span class="text-danger">*</span>' : '');?>
     </label>
