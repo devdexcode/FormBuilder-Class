@@ -71,7 +71,7 @@ class FormBuilder
         }
         ?>
         <?php if(in_array($container_exists,$container_exists_options)):?>
-            <div class="form-group row <?php echo !empty($container_class) ? $container_class :'';?>">
+            <div class="form-group row form-builder-row <?php echo $the_id?>_container">
         <?php endif;?>
         <?php if(!isset($no_label) || $no_label == "" || empty($no_label)){//if label exists
           
