@@ -9,20 +9,18 @@
 class FormBuilder
 {
     public $args_help = array(
-        'type' => 'THE TYPE OF THE FIELD, IF LEFT SHALL ASSUMED input type text',
+        'type' => 'THE TYPE OF THE FIELD, IF LEFT SHALL ASSUMED input type text<hr/>',
         'name' => 'THE NAME',
         'id' => 'THE ID',
         'label OR placeholder' => 'THE LABEL OR PLACEHOLDER',
-        'NOTE FOR THE ABOVE 3' => 'IF ANY ONE OF THE name/id/label WAS PROVIDED, IT WILL TAKE CARE OF THE REST',
+        'NOTE FOR THE ABOVE 3' => 'IF ANY ONE OF THE name/id/label WAS PROVIDED, IT WILL TAKE CARE OF THE REST<hr/>',
         'required OR req' => 'IS REQUIRED OR NOT',
         'description' => 'DESCRIPTION DIV BELOW THE INPUT',
         'database_value OR dbval'=> 'THE VALUE COMING FROM DATABSE',
         'container_exists' => 'IF THE OUTER CONTAINER div EXISTS FOR THE lebel AND input/field',
-        'container_class' => 'CSS CLASS OF THE ABOVE div CONTINER',
-        'no_label' => 'IF HAS ANY VALUE IT SHALL NOT DISPLAY THE LABEL', 
+        'container_class' => 'CSS CLASS OF THE ABOVE div CONTINER', 
         'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload',//
-         'help OR h' => 'RESPONSIBLE FOR THIS HELP',
-         'NOTE' => 'NOTE: IN THIS VERSION THERE WILL NOT BE ANY CONTAINER div FOR label or input ECT:',
+         'NOTE:' => ' IN THIS VERSION THERE WILL NOT BE ANY CONTAINER div FOR label or input ECT',
     );
 
         public function field($args){
@@ -47,29 +45,27 @@ class FormBuilder
                 $the_id = $name;          
                 $the_name = $name;  
             }?>
-        <?php if($this->is_not_empty($container_exists)):?>
-            <div class="form-group form-builder-row <?php echo $the_id?>_container <?php echo $this->is_not_empty($container_class) ? $container_class : '';?>">
+        <?php if($container_exists != ""):?>
+            <div class="form-group form-builder-row <?php echo $the_id?>_container <?php echo $container_class!= "" ? $container_class : '';?>">
         <?php endif;?>
-        <?php if($this->is_not_empty(@$no_label)){//if label exists?>
-            <label class="control-label <?php echo $this->is_not_empty(@$label_class) ? $label_class: '';?> <?=$the_name;?>_label" for="<?php echo $the_id;?>">
-                <?=@$the_label;?>:
+         
+            <label class="control-label <?php echo @$label_class != "" ? $label_class: '';?> <?=$the_name;?>_label" for="<?php echo $the_id;?>">
+            <?php if( ($type == 'checkbox' || $type == 'radio')):?><span><?php endif;?><?=@$the_label;?>:<?php if( ($type == 'checkbox' || $type == 'radio')):?></span><?php endif;?>
                 <?php echo (isset($required) || @$required !== null || !empty(@$required) ? '<span class="text-danger">*</span>' : '');?>
-            <?php if( ($type != 'checkbox' || $type != 'radio')):?></label>    <?php endif;?>
-        <?php  }//ends if label exists?>
+            </label> 
         <?php 
             if(in_array($type, $types)){
                 include('components/fields/'.$type.'.php');
             } else{
                 include('components/fields/text.php');
             }
-        ?><?php if( ($type == 'checkbox' || $type == 'radio')):?></label>    <?php endif;?>
+        ?>
+<?php if($container_exists != ""):?></div><?php endif;?>
 
-<?php if($this->is_not_empty(@$h) || $this->is_not_empty(@$help)):?>
+<?php if(!empty(@$help)):?>
     <?php $this->help();?>
 <?php endif;?>
-
-            <?php if($container_exists):?></div><?php endif;?>
- <?php        }
+<?php        }
 
 
 private function is_not_empty($str){
@@ -92,20 +88,23 @@ private function is_empty($str){
             $str = preg_replace('/_/', ' ', $str);
             return $str;
         }
-private function help(){    
-    ?>
+public function help(){    
+    ob_start();?>
             <div class="container">
             <div class="row">
-    <h3>Help:</h3>
-    <p><strong>Available args with notes:</strong></p>
+    <h3 style="width:100%;">Help:</h3>
+    <p><strong>Available args with notes (12):</strong></p>
     <ul>
     <?php foreach($this->args_help as $key=>$value):?>
-        <li><strong><?=$key?></strong><?=$value;?></li>
+        <li><strong><?=$key?></strong> <?=$value;?></li>
     <?php endforeach;?>    
     </ul>
     <small><em>To hide this remove h or help from the function args</em></small>
             </div>
             </div>
-<?php }
+<?php $html = ob_get_clean();
+echo $html;
+}
+
 }    
 ?>

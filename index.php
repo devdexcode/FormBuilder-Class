@@ -27,7 +27,36 @@
     'type' => 'text',
     'label_class'=>'col-md-3',
     'input_class'=>'col-md-3',
-    'help'=>'help'
+)); ?>
+<h3>Textarea</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'message',
+    'required' => 1,
+    'type' => 'textarea',
+    'label_class'=>'col-md-3',
+    'input_class'=>'col-md-3'
+)); ?>
+<h3>Email</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'message',
+    'required' => 1,
+    'type' => 'email',
+    'label_class'=>'col-md-3',
+    'input_class'=>'col-md-3'
+)); ?>
+<h3>Checkbox</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'agree',
+    'required' => 1,
+    'type' => 'checkbox',   
+     'label_class'=>'order-md-2 col-md-2',
+    'input_class'=>'order-md-1 col-md-1'
 )); ?>
 <?php /*$form_builder->field('h',array(
     'container_exists' => 'yes',

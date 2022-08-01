@@ -83,7 +83,7 @@ class FormBuilderBeta
                 include('components/types/text.php');
             }
         ?>
-            <?php if($container_exists):?></div><?php endif;?>
+            <?php if($container_exists !== ""):?></div><?php endif;?>
   <?php }
 
 
