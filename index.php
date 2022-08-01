@@ -21,6 +21,16 @@
 <h3>Text</h3>
 <?php $form_builder->field(array(
     'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'Full Name',
+    'required' => 1,
+    'type' => 'text',
+    'label_class'=>'col-md-3',
+    'input_class'=>'col-md-3',
+    'help'=>'help'
+)); ?>
+<?php /*$form_builder->field('h',array(
+    'container_exists' => 'yes',
     'label' => 'Full Name',
     'required' => 1,
     'type' => 'text',
@@ -54,7 +64,7 @@
     'label_col'=>3,
     'input_col'=>4,
     'label_position'=>'top',
-)); ?>
+)); */?>
 
     <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
     <hr>
