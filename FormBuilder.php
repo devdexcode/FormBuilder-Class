@@ -12,27 +12,21 @@ class FormBuilder
     // public $args = array(
     //     'type' => '',
     //     'name' => '',
-    //     'label' => '',
-    //     'required' || 'req' => '',
-    //     'placeholder' => '',
-    //     'description' => '',
     //     'id' => '',
-    //     'css_class' => '',
+    //     'label' => || 'placeholder' '',
+    //     'required' || 'req' => '',
+    //     'description' => '',
     //     'database_value' || 'dbval'=> '',
-    //     'container_exists' => '',
-    //     'container_class' => '',
-    //     'label_class' => '',
-    //     'label_col' => '',
-    //     'label_col_class' => '',
-    //     'label_position' => '',
-    //     'description_exists' => '',
-    //     'description_class' => '',
+
     //     'response_div_exists' => '',
-    //     'response_div_class' => '',
-    //     'data_attribute' || 'data_attr' => '',
-    //      'label_class',
-    //      'label_col_class',
-    //      'field_col_class',
+
+    //     'container_exists' => '', //if container exists ask for container class
+    //     'container_class' => '',
+
+    //      NOTE: IN THIS VERSION THERE'LL NOT BE containers for example I'LL USE THE CLASS TO THE LABEL OR INPUT EXAMPLE BELOW:
+    //      <label for="" class="col-md-4"></label> <input tyep="text" class="col-md-8">
+    //     'label_exists' => '', // if label exists ask for label container class NOTE: REMOVE LABEL POSITION AND LABEL COLS
+    //     'input class' => '',//apply column classes direct to input except ceheckbox/radiobutton/fileupload
     // );
     /**
      * text
@@ -50,7 +44,7 @@ class FormBuilder
         $container_exists_options = array('yes',1,'y','true');
 
         
-        $types      = array('text');
+        $types      = array('text','textarea','email','checkbox');
 
 
         if((!isset($name) || empty($name) ) && (!isset($id) || empty($id) )  && (!isset($label) || empty($label) ) ){

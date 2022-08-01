@@ -18,39 +18,43 @@
 
 <form name="SignUp" id="SignUp" method="post">
 <?php $form_builder = new FormBuilder();?>
+<h3>Text</h3>
 <?php $form_builder->field(array(
-    'container_exists'=>'yes', 
-    'label'=>'Full Name',
-    'required'=>1,
-    'label_col'=>4,
-    'input_col'=>8,
-    'type'=>'text',
-    ));
-
-    $form_builder->field(array(
-        'container_exists'=>'yes', 
-        'required'=>1,
-        'label_col'=>4,
-        'input_col'=>8,
-        'label_position'=>'top',
-        'id'=>'user_email'
-        ));
-        $form_builder->field(array(
-            'container_exists'=>'yes', 
-            'name'=>'',
-            'required'=>1,
-            'label_col'=>4,
-            'input_col'=>8,
-            'label_position'=>'side',
-            'id'=>'bingo'
-            ));
-            $form_builder->field(array(
-                'container_exists'=>'yes', 
-                'name'=>'Age',
-                'required'=>1,
-                'label_position'=>0,
-                'no_label'=>'yes',
-                ));?>
+    'container_exists' => 'yes',
+    'label' => 'Full Name',
+    'required' => 1,
+    'type' => 'text',
+    'label_col'=>3,
+    'input_col'=>4
+)); ?>
+<h3>Email</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'label' => 'your email',
+    'required' => 1,
+    'type' => 'email',
+    'label_col'=>3,
+    'input_col'=>4,
+)); ?>
+<h3>Textarea</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'label' => 'message',
+    'required' => 1,
+    'type' => 'textarea',
+    'label_col'=>3,
+    'input_col'=>4,
+)); ?>
+<h3>Checkbox</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'label' => 'accept',
+    'required' => 1,
+    'type' => 'checkbox',
+    'label_col'=>3,
+    'input_col'=>4,
+    'label_position'=>'top',
+)); ?>
 
     <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
     <hr>
@@ -59,15 +63,18 @@
                 </div>
             </div>
         </div>
-       
-        
-        <!-- <div class="container">
+
+
+        <div class="container">
             <div class="row">
                 <div class="col-md-12">
-
+        <h2>old form class</h2>
+    <?php $form_class = new FormFields();
+    $form_class->checkbox('accept1', 'accept', '', 'required', 'yes','', 'test_checkbox');
+    ?>
                 </div>
             </div>
-        </div> -->
+        </div>
 
 
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
