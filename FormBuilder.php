@@ -49,10 +49,11 @@ class FormBuilder
             <div class="form-group form-builder-row <?php echo $the_id?>_container <?php echo $container_class!= "" ? $container_class : '';?>">
         <?php endif;?>
          
-            <label class="control-label <?php echo @$label_class != "" ? $label_class: '';?> <?=$the_name;?>_label" for="<?php echo $the_id;?>">
+            <label class="control-label <?php echo @$label_class != "" ? $label_class: '';?> <?=$the_name;?>_label <?php echo ($type !='checkbox') ? '':'order-md-2'; ?>" for="<?php echo $the_id;?>">
             <?php if( ($type == 'checkbox' || $type == 'radio')):?><span><?php endif;?><?=@$the_label;?>:<?php if( ($type == 'checkbox' || $type == 'radio')):?></span><?php endif;?>
                 <?php echo (isset($required) || @$required !== null || !empty(@$required) ? '<span class="text-danger">*</span>' : '');?>
             </label> 
+            
         <?php 
             if(in_array($type, $types)){
                 include('components/fields/'.$type.'.php');
@@ -67,18 +68,7 @@ class FormBuilder
 <?php endif;?>
 <?php        }
 
-
-private function is_not_empty($str){
-    if(!empty($str) || isset($str) || $str !== null || $str !== "" || $str !== 0){
-        return true;
-    }
-}
-private function is_empty($str){
-    if(empty($str) || !isset($str) || $str === null || $str === "" || $str === 0){
-        return true;
-    }
-}
-        
+       
         public function make_label($str) {
             // Remove all characters except A-Z, a-z, 0-9
             $str = preg_replace('/[^A-Za-z0-9 -_]/', ' ', $str);

@@ -1,5 +1,5 @@
 <?php if( @$input_class != "" ) {?>
-  <div class="<?=@$input_class;?> display-table">
+  <div class="order-md-1 <?=@$input_class;?> display-table" style=" display:table;">
 <?php }?>
 
   <input type="checkbox" class="
@@ -8,7 +8,7 @@
   name="<?=$the_name?>" 
   value="yes" <?=(@$req != ""?'required="required"':'');?> 
   data-id="<?=$the_id?>" 
-  <?php echo (@$dbval == "yes"?'checked="checked"':'');?>>
+  <?php echo (@$dbval == "yes"?'checked="checked"':(isset($_REQUEST[$the_name]) ? 'checked="checked"':''));?>  style=" display:table-cell;">
   <?php if(isset($desc) || isset($description)):?><div class="description"><?=@$desc || @$description !=""?@$desc || @$description :'';?></div><?php endif;?>
 <?php if( @$input_class != "" ) {?>
   </div>
