@@ -19,7 +19,8 @@ class FormBuilder
         'database_value OR dbval'=> 'THE VALUE COMING FROM DATABSE',
         'container_exists' => 'IF THE OUTER CONTAINER div EXISTS FOR THE lebel AND input/field',
         'container_class' => 'CSS CLASS OF THE ABOVE div CONTINER', 
-        'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload',//
+        'options' => 'THE OPTIONS FOR: radio/select/multiple', 
+        'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload/multiple',//
          'NOTE:' => ' IN THIS VERSION THERE WILL NOT BE ANY CONTAINER div FOR label or input ECT',
     );
 
@@ -27,7 +28,7 @@ class FormBuilder
             foreach($args as $k => $v) {
                 $$k = $v;
             }
-            $types  = array('text','textarea','email','checkbox','checkbox','hidden','image','select','multiselect','country','date');
+            $types  = array('text','textarea','email','checkbox','radio','select','multiple','image','date');
 
             if((!isset($name) || empty($name) ) && (!isset($id) || empty($id) )  && (!isset($label) || empty($label) ) ){
                 echo "<div class='text-danger form-group row'>Please specify at least one unique identifier! i.e: id,name or label.</div>"; 
@@ -83,7 +84,7 @@ public function help(){
             <div class="container">
             <div class="row">
     <h3 style="width:100%;">Help:</h3>
-    <p><strong>Available args with notes (12):</strong></p>
+    <p><strong>Available args with notes:</strong></p>
     <ul>
     <?php foreach($this->args_help as $key=>$value):?>
         <li><strong><?=$key?></strong> <?=$value;?></li>

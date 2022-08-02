@@ -59,6 +59,28 @@
      'label_class'=>'col-md-2',
     'input_class'=>'col-md-1'
 )); ?>
+<h3>Radio</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'Gender',
+    'required' => 1,
+    'type' => 'radio',   
+     'label_class'=>'col-md-2',
+    'input_class'=>'col-md-3',
+    'options'=> array('male','female')
+)); ?>
+<h3>Select</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'misc',
+    'required' => 1,
+    'type' => 'select',   
+     'label_class'=>'col-md-2',
+    'input_class'=>'col-md-3',
+    'options'=> array('lorem','ipsum','dolor','sit','amet')
+)); ?>
 <?php /*$form_builder->field('h',array(
     'container_exists' => 'yes',
     'label' => 'Full Name',
@@ -96,6 +118,8 @@
     'label_position'=>'top',
 )); */?>
 
+
+
     <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
     <hr>
     <?php ?>
@@ -104,7 +128,12 @@
             </div>
         </div>
 
-
+        <div class="form-group">
+    <label for="input" class="col-sm-2 control-label">:</label>
+    <div class="col-sm-10">
+        <input type="date" name="" id="input" class="form-control" value="" required="required" title="">
+    </div>
+</div>
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
