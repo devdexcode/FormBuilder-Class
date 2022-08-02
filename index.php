@@ -81,6 +81,17 @@
     'input_class'=>'col-md-3',
     'options'=> array('lorem','ipsum','dolor','sit','amet')
 )); ?>
+<h3>Multiple</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'the_multiple',
+    'required' => 1,
+    'type' => 'multiple',   
+     'label_class'=>'col-md-2',
+    'input_class'=>'col-md-2',
+    'options'=> array('lorem','ipsum','dolor','sit','amet')
+)); ?>
 <?php /*$form_builder->field('h',array(
     'container_exists' => 'yes',
     'label' => 'Full Name',

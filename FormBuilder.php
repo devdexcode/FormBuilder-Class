@@ -16,7 +16,7 @@ class FormBuilder
         'NOTE FOR THE ABOVE 3' => 'IF ANY ONE OF THE name/id/label WAS PROVIDED, IT WILL TAKE CARE OF THE REST<hr/>',
         'required OR req' => 'IS REQUIRED OR NOT',
         'description' => 'DESCRIPTION DIV BELOW THE INPUT',
-        'database_value OR dbval'=> 'THE VALUE COMING FROM DATABSE',
+        'dbval'=> 'THE VALUE COMING FROM DATABSE',
         'container_exists' => 'IF THE OUTER CONTAINER div EXISTS FOR THE lebel AND input/field',
         'container_class' => 'CSS CLASS OF THE ABOVE div CONTINER', 
         'options' => 'THE OPTIONS FOR: radio/select/multiple', 
