@@ -71,9 +71,9 @@ class FormBuilder
             
         <?php 
             if(in_array($type, $types)){
-                include('components/fields/'.$type.'.php');
+                include('fields/'.$type.'.php');
             } else{
-                include('components/fields/text.php');
+                include('fields/text.php');
             }
         ?>
 <?php if($container_exists != ""):?></div><?php endif;?>
