@@ -8,6 +8,10 @@
  * * * * */
 class FormBuilder
 {
+    public function __construct()
+    {
+        error_reporting(0);
+    }
     public $args_help = array(
         'type' => 'THE TYPE OF THE FIELD, IF LEFT SHALL ASSUMED input type text<hr/>',
         'name' => 'THE NAME',
@@ -20,15 +24,17 @@ class FormBuilder
         'container_exists' => 'IF THE OUTER CONTAINER div EXISTS FOR THE lebel AND input/field',
         'container_class' => 'CSS CLASS OF THE ABOVE div CONTINER', 
         'options' => 'THE OPTIONS FOR: radio/select/multiple', 
+        'for range' => 'min & max: ARE MUST', 
         'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload/multiple',//
          'NOTE:' => ' IN THIS VERSION THERE WILL NOT BE ANY CONTAINER div FOR label or input ECT',
+         'Available types in version 1' => "'text','textarea','email','checkbox','radio','select','multiple','date','image','range'"
     );
 
         public function field($args){
             foreach($args as $k => $v) {
                 $$k = $v;
             }
-            $types  = array('text','textarea','email','checkbox','radio','select','multiple','image','date');
+            $types  = array('text','textarea','email','checkbox','radio','select','multiple','date','image','range');
 
             if((!isset($name) || empty($name) ) && (!isset($id) || empty($id) )  && (!isset($label) || empty($label) ) ){
                 echo "<div class='text-danger form-group row'>Please specify at least one unique identifier! i.e: id,name or label.</div>"; 
@@ -46,6 +52,14 @@ class FormBuilder
                 $the_id = $name;          
                 $the_name = $name;  
             }?>
+            <?php
+            if($type==="range"){
+                if(($min =="") || ($min =="")){
+                    echo "<div class='text-danger form-group row'>Please specify min & max values for range.</div>"; 
+                    return;
+                }
+            }
+            ?>
         <?php if($container_exists != ""):?>
             <div class="form-group form-builder-row <?php echo $the_id?>_container <?php echo $container_class!= "" ? $container_class : '';?>">
         <?php endif;?>
@@ -70,15 +84,15 @@ class FormBuilder
 <?php        }
 
        
-        public function make_label($str) {
-            // Remove all characters except A-Z, a-z, 0-9
-            $str = preg_replace('/[^A-Za-z0-9 -_]/', ' ', $str);
-            // Replace sequences of spaces 
-            $str = preg_replace('/  */', ' ', $str);
-            $str = preg_replace('/-/', ' ', $str);
-            $str = preg_replace('/_/', ' ', $str);
-            return $str;
-        }
+public function make_label($str) {
+    // Remove all characters except A-Z, a-z, 0-9
+    $str = preg_replace('/[^A-Za-z0-9 -_]/', ' ', $str);
+    // Replace sequences of spaces 
+    $str = preg_replace('/  */', ' ', $str);
+    $str = preg_replace('/-/', ' ', $str);
+    $str = preg_replace('/_/', ' ', $str);
+    return $str;
+}
 public function help(){    
     ob_start();?>
             <div class="container">

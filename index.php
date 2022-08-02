@@ -7,7 +7,8 @@
         <title>Title Page</title>
         <link rel='stylesheet' id='Font_Awesome-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?ver=6.0.1' type='text/css' media='all' />
 <link rel='stylesheet' id='bootstrap-css'  href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css?ver=6.0.1' type='text/css' media='all' />
-    </head>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+   </head>
     <body>
         <?php include_once 'FormBuilder.php';?>
         <?php include_once 'formClass.php';?>
@@ -92,46 +93,50 @@
     'input_class'=>'col-md-2',
     'options'=> array('lorem','ipsum','dolor','sit','amet')
 )); ?>
-<?php /*$form_builder->field('h',array(
-    'container_exists' => 'yes',
-    'label' => 'Full Name',
-    'required' => 1,
-    'type' => 'text',
-    'label_col'=>3,
-    'input_col'=>4
-)); ?>
-<h3>Email</h3>
+<h3>Date</h3>
 <?php $form_builder->field(array(
     'container_exists' => 'yes',
-    'label' => 'your email',
+    'container_class' => 'row',
+    'label' => 'event date',
     'required' => 1,
-    'type' => 'email',
-    'label_col'=>3,
-    'input_col'=>4,
+    'type' => 'date',   
+     'label_class'=>'col-md-2',
+    'input_class'=>'col-md-2',
 )); ?>
-<h3>Textarea</h3>
+<h3>Image Upload</h3>
 <?php $form_builder->field(array(
     'container_exists' => 'yes',
-    'label' => 'message',
+    'container_class' => 'row',
+    'label' => 'your image',
     'required' => 1,
-    'type' => 'textarea',
-    'label_col'=>3,
-    'input_col'=>4,
+    'type' => 'image',   
+     'label_class'=>'col-md-2',
+    'input_class'=>'col-md-8',
 )); ?>
-<h3>Checkbox</h3>
+<h3>Range</h3>
 <?php $form_builder->field(array(
     'container_exists' => 'yes',
-    'label' => 'accept',
+    'container_class' => 'row',
+    'label' => 'the range',
     'required' => 1,
-    'type' => 'checkbox',
-    'label_col'=>3,
-    'input_col'=>4,
-    'label_position'=>'top',
-)); */?>
-
-
-
-    <button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+    'type' => 'range',   
+     'label_class'=>'col-md-2',
+    'input_class'=>'col-md-8',
+    'min'=>'0',
+    'max'=>'100',
+)); ?>
+<h3>Range</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'test',
+    'required' => 1,
+    'type' => 'text',   
+     'label_class'=>'col-md-2',
+    'input_class'=>'col-md-8',
+    'help'=>'1'
+)); ?>
+<button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
     <hr>
     <?php ?>
 </form>
@@ -139,25 +144,8 @@
             </div>
         </div>
 
-        <div class="form-group">
-    <label for="input" class="col-sm-2 control-label">:</label>
-    <div class="col-sm-10">
-        <input type="date" name="" id="input" class="form-control" value="" required="required" title="">
-    </div>
-</div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-        <h2>old form class</h2>
-    <?php $form_class = new FormFields();
-    $form_class->checkbox('accept1', 'accept', '', 'required', 'yes','', 'test_checkbox');
-    ?>
-                </div>
-            </div>
-        </div>
 
-
-        <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+        
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     </body>
 </html>

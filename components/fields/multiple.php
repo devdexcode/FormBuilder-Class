@@ -4,7 +4,7 @@
   <input type="checkbox" 
   class="<?=$the_id?> input-<?=$type;?> input-checkbox field_<?=$the_id?>" id="<?=$the_id?>" 
   name="<?=$the_name?>[]" 
-  <?php echo (@$dbval == $option ?'checked="checked"':(in_array($option,$_REQUEST[@$the_name]) ? 'checked="checked"':''));?>
+  <?php echo (@$dbval == $option ?'checked="checked"':(isset($_REQUEST[@$the_name]) && in_array($option,$_REQUEST[@$the_name]) ? 'checked="checked"':''));?>
   data-id="<?=$the_name?>"
   value="<?=$option;?>"></label>
 <?php endforeach;?>
