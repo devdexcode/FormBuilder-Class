@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Title Page</title>
-        <link rel='stylesheet' id='Font_Awesome-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?ver=6.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='Font_Awesome-css'  href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css?ver=6.0.1' type='text/css' media='all' />
 <link rel='stylesheet' id='bootstrap-css'  href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css?ver=6.0.1' type='text/css' media='all' />
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
    </head>
@@ -136,7 +136,7 @@
     'input_class'=>'col-md-8',
     'help'=>'1'
 )); ?>
-<button type="submit" class="btn btn-primary" id="sendMessageButton">Send Message</button>
+<button type="submit" class="btn btn-primary btn_submit form_builder_submit" id="sendMessageButton">Send Message</button>
     <hr>
     <?php ?>
 </form>
@@ -147,5 +147,37 @@
 
         
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script>
+    function validate(obj) {
+        let val =obj.value;
+        submit = document.getElementsByClassName('form_builder_submit');    
+        if(val == ""){
+            alert('please enter '+make_label(obj.name)); 
+            submit[0].setAttribute("disabled", "disabled");
+            event.preventDefault();
+            return false;
+        }else if(val.length <= 2){
+            alert(make_label(obj.name)+' must be at least 3 characters!');
+        }else{
+            alert(obj.type);
+            submit[0].removeAttribute("disabled");
+        }
+    }
+
+    function make_label(target){
+        let object_label = target.replace(/_/g, ' ').replace(/#/g, '');
+        return object_label;
+    }
+</script>
+<script>
+    (function ($) {
+ $(document).ready(function() {	
+	$('.form_builder_submit').on('click',function(e){
+        e.preventDefault();
+        console.log('Clicked!');
+    });
+ });
+})(jQuery);
+</script>
     </body>
 </html>

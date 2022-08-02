@@ -19,6 +19,7 @@ class FormBuilder
         'label OR placeholder' => 'THE LABEL OR PLACEHOLDER',
         'NOTE FOR THE ABOVE 3' => 'IF ANY ONE OF THE name/id/label WAS PROVIDED, IT WILL TAKE CARE OF THE REST<hr/>',
         'required OR req' => 'IS REQUIRED OR NOT',
+        'type_class' => 'alpha:alphabets only,numeric: numbers only,alphanumeric: exclude all special chars',
         'description' => 'DESCRIPTION DIV BELOW THE INPUT',
         'dbval'=> 'THE VALUE COMING FROM DATABSE',
         'container_exists' => 'IF THE OUTER CONTAINER div EXISTS FOR THE lebel AND input/field',
