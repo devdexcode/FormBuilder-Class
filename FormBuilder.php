@@ -4,7 +4,7 @@
  * Version: 1
  * Date: 29 July, 2022
  * Description: Creates form fields.
- * Fields: text, textarea, radio, checkbox, multiselect=multiselect checkboxes, country, date,select, file upload,
+ * Fields: "'text','textarea','email','checkbox','radio','select','multiple','date','image','range'"
  * * * * */
 class FormBuilder
 {
@@ -27,7 +27,8 @@ class FormBuilder
         'for range' => 'min & max: ARE MUST', 
         'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload/multiple',//
          'NOTE:' => ' IN THIS VERSION THERE WILL NOT BE ANY CONTAINER div FOR label or input ECT',
-         'Available types in version 1' => "'text','textarea','email','checkbox','radio','select','multiple','date','image','range'"
+         'Available types in version 1' => "'text','textarea','email','checkbox','radio','select','multiple','date','image','range'",
+         'Available types in version 2' => "'multiselect','wp_colorpicker','wp_upload','select_key_value','select_wpquery'"
     );
 
         public function field($args){
