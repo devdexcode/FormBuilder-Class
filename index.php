@@ -26,8 +26,12 @@
     'label' => 'Full Name',
     'required' => 1,
     'type' => 'text',
-    'label_class'=>'col-md-3',
-    'input_class'=>'col-md-3',
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
+    'min' => 4,
+    'max' => 5
 )); ?>
 
 <h3>Email</h3>
@@ -37,8 +41,10 @@
     'label' => 'email',
     'required' => 1,
     'type' => 'email',
-    'label_class'=>'col-md-3',
-    'input_class'=>'col-md-3'
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
 )); ?>
 <h3>Textarea</h3>
 <?php $form_builder->field(array(
@@ -47,8 +53,10 @@
     'label' => 'message',
     'required' => 1,
     'type' => 'textarea',
-    'label_class'=>'top',
-    'input_class'=>'bottom'
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
 )); ?>
 <h3>Checkbox</h3>
 <?php $form_builder->field(array(
@@ -57,8 +65,10 @@
     'label' => 'agree',
     'required' => 1,
     'type' => 'checkbox',   
-     'label_class'=>'col-md-2',
-    'input_class'=>'col-md-1'
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
 )); ?>
 <h3>Radio</h3>
 <?php $form_builder->field(array(
@@ -67,8 +77,10 @@
     'label' => 'Gender',
     'required' => 1,
     'type' => 'radio',   
-     'label_class'=>'col-md-2',
-    'input_class'=>'col-md-3',
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
     'options'=> array('male','female')
 )); ?>
 <h3>Select</h3>
@@ -78,19 +90,36 @@
     'label' => 'misc',
     'required' => 1,
     'type' => 'select',   
-     'label_class'=>'col-md-2',
-    'input_class'=>'col-md-3',
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
     'options'=> array('lorem','ipsum','dolor','sit','amet')
+)); ?>
+<h3>Select 2</h3>
+<?php $form_builder->field(array(
+    'container_exists' => 'yes',
+    'container_class' => 'row',
+    'label' => 'select test',
+    'required' => 'yes',
+    'type' => 'select',   
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
+    'options'=> array('one','two','three','four','five','six')
 )); ?>
 <h3>Multiple</h3>
 <?php $form_builder->field(array(
     'container_exists' => 'yes',
     'container_class' => 'row',
-    'label' => 'the_multiple',
+    'label' => 'the multiple',
     'required' => 1,
     'type' => 'multiple',   
-     'label_class'=>'col-md-2',
-    'input_class'=>'col-md-2',
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
     'options'=> array('lorem','ipsum','dolor','sit','amet')
 )); ?>
 <h3>Date</h3>
@@ -100,8 +129,10 @@
     'label' => 'event date',
     'required' => 1,
     'type' => 'date',   
-     'label_class'=>'col-md-2',
-    'input_class'=>'col-md-2',
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
 )); ?>
 <h3>Image Upload</h3>
 <?php $form_builder->field(array(
@@ -110,8 +141,10 @@
     'label' => 'your image',
     'required' => 1,
     'type' => 'image',   
-     'label_class'=>'col-md-2',
-    'input_class'=>'col-md-8',
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
 )); ?>
 <h3>Range</h3>
 <?php $form_builder->field(array(
@@ -120,23 +153,39 @@
     'label' => 'the range',
     'required' => 1,
     'type' => 'range',   
-     'label_class'=>'col-md-2',
-    'input_class'=>'col-md-8',
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
     'min'=>'0',
     'max'=>'100',
 )); ?>
-<h3>Range</h3>
+<h3>Password</h3>
 <?php $form_builder->field(array(
     'container_exists' => 'yes',
     'container_class' => 'row',
-    'label' => 'test',
+    'label' => 'Password',
     'required' => 1,
-    'type' => 'text',   
-     'label_class'=>'col-md-2',
-    'input_class'=>'col-md-8',
+    'type' => 'password',   
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
+    'min'=>4,
     'help'=>'1'
 )); ?>
-<button type="submit" class="btn btn-primary btn_submit form_builder_submit" id="sendMessageButton">Send Message</button>
+<h3>Submit</h3>
+<?php $form_builder->field(array(
+
+    'container_class' => 'row',
+    'label' => 'submit',
+    'required' => 1,
+    'type' => 'submit',   
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-reverse',
+    'input_col'=>'col-md-4',
+)); ?>
     <hr>
     <?php ?>
 </form>
@@ -145,9 +194,9 @@
         </div>
 
 
-        
+<?php $form_builder->jQuery_validation();?>       
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<script>
+<!-- <script>
     function validate(obj) {
         let val =obj.value;
         submit = document.getElementsByClassName('form_builder_submit');    
@@ -163,12 +212,7 @@
             submit[0].removeAttribute("disabled");
         }
     }
-
-    function make_label(target){
-        let object_label = target.replace(/_/g, ' ').replace(/#/g, '');
-        return object_label;
-    }
-</script>
+</script> -->
 <script>
     (function ($) {
  $(document).ready(function() {	
