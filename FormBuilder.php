@@ -1,10 +1,10 @@
 <?php
 /* * * *
  * Class: FormBuilder
- * Version: 2
- * Date: 2 Aug, 2022 | v1: 29 Jul, 2022
+ * Version: 2.2
+ * Date: 2.2: 5 Aug, | 2 Aug, 2022 | v1: 29 Jul, 2022
  * Description: Creates form fields with jQuery validation.
- * Fields: text, textarea, radio, checkbox, multiselect=multiselect checkboxes, country, date,select, file upload,
+ * Fields: 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select', 'multiple', 'date', 'image', 'range', 'submit',
  * * * * */
 class FormBuilder
 {
@@ -24,13 +24,12 @@ class FormBuilder
         'type_class' => 'alpha:alphabets only,numeric: numbers only,alphanumeric: exclude all special chars',
         'description' => 'DESCRIPTION DIV BELOW THE INPUT',
         'dbval' => 'THE VALUE COMING FROM DATABSE',
-        // 'container_exists' => 'IF THE OUTER CONTAINER div EXISTS FOR THE lebel AND input/field',
         'container_class' => 'CSS CLASS OF THE ABOVE div CONTINER',
         'options' => 'THE OPTIONS FOR: radio/select/multiple',
         'for range' => 'min & max: ARE MUST',
         'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload/multiple', //
-        'NOTE:' => ' Want jQuery Validation? just add:  $form_builder = new FormBuilder(); $form_builder->jQuery_validation(); to your footer after jQuery',
-        'Available types in version 1' => "'text','textarea','email','checkbox','radio','select','multiple','date','image','range'",
+        'NOTE:' => ' Want jQuery Validation? just add:  $form_builder = new FormBuilder(); $form_builder->jQuery_validation(); to your footer after jQuery and inside your onclick add: form_validator(".form_builder_submit",".form_builder_field.required"); ',
+        'Available types in version 2.1' => " 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select', 'multiple', 'date', 'image', 'range', 'submit' ",
     );
 
     public function field($args)
@@ -57,14 +56,13 @@ class FormBuilder
             $the_name = $name;
         }?>
             <?php
-if ($type === "range") {
+        if ($type === "range") {
             if (($min == "") || ($min == "")) {
                 echo "<div class='text-danger form-group row'>Please specify min & max values for range.</div>";
                 return;
             }
         }
         ?>
-
 <div class="form-group form_builder_row <?php echo $the_id ?>_container <?php echo $container_class != "" ? $container_class : ''; ?>">
 <?php if (isset($label_col) && $label_col != "") {?><div class="<?php echo $label_col ?> form_builder_col"><?php }?>
 <?php if($type != "submit"):?>
@@ -75,13 +73,13 @@ if ($type === "range") {
 <?php endif;//ends type=submit?>            
 <?php if (isset($label_col) && $label_col != "") {?></div><?php }?>
 <?php if (isset($input_col) && $input_col != "") {?><div class="<?php echo $input_col ?> form_builder_col"><?php }?>
-        <?php
-if (in_array($type, $types)) {
-            include 'fields/' . $type . '.php';
-        } else {
-            include 'fields/text.php';
-        }
-        ?>
+    <?php
+    if (in_array($type, $types)) {
+        include 'fields/' . $type . '.php';
+    } else {
+        include 'fields/text.php';
+    }
+    ?>
 <?php if (isset($input_col) && $input_col != "") {?></div><?php }?>
 </div>
 <?php if (!empty(@$help)): ?>
@@ -93,146 +91,7 @@ if (in_array($type, $types)) {
     public function jQuery_validation()
     {
         ob_start();?>
-    <script>
-
-    /* * * * * * * * * * *
-    * STARTS ON CHANGE  *
-    * * * * * * * * * * */ 
-    function form_validator(submit_btn,req_class){
-        // $(submit_btn).on('click',function(e){
-        // e.preventDefault();
-        $.each($(req_class),function(){
-            let _this    =  $(this);
-            let the_type =  _this[0].type;
-            // debugger;
-            let the_name = _this.attr('name');
-            if(_this.val() === ""){
-                handle_error( 'Please provide '+make_label(_this.prop("id"))  ,_this );
-                ValidationError = 1;
-                return false;
-            }else if( _this.val().length < _this.attr('minlength') ){ debugger;
-                handle_error( 'The '+make_label(_this.prop("id"))+' must be at least '+_this.attr('minlength')+' characters!' ,_this);
-                ValidationError = 1;
-               
-                return false;
-            }else if(the_type =='radio' && $("input[name='"+the_name+"']:checked").length == 0){
-                    handle_error( 'Please choose '+make_label(_this.prop("name")) ,_this);
-                    ValidationError = 1;
-                    return false;
-            }else if(the_type =='checkbox' && $("input[name='"+the_name+"']:checked").length == 0){
-                // handle_error( 'Please provide '+make_label(_this.prop("id")) ,_this);
-                handle_error( 'This field is required!' , _this);
-                ValidationError = 1;
-                return false;
-            } else if(the_type =='email' && isValidEmail(_this.val())==false){
-                handle_error( 'Please enter a valid email!' ,_this);
-                ValidationError = 1;
-                return false;
-            }else{
-                remove_error(_this);
-                ValidationError = 0;
-                console.log('Good to go...');
-                _this.closest('.form_builder_row').find('.response').hide();
-                _this.removeClass('border-danger');
-                // return true;
-            }
-
-        });//ends each loop
-
-    }//ENDS JQUERY FORM VALIDATION 
-
-
-       /* * * * * * * * * * *
-        * STARTS ON CHANGE  *
-        * * * * * * * * * * */ 
-       $('.form_builder_field.required').on('focusout',function(e){
-            let _this    =  $(this);
-            if(_this.val() != ""){
-                _this.closest('.form_builder_row').find('.response').hide();
-                _this.removeClass('border-danger');
-            }else if(_this.val() == ""){
-                err = 'Please provide '+make_label(_this.prop("id"))  ;
-                _this.closest('.form_builder_row').find('.response').show();
-                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
-                _this.addClass('border-danger');
-    
-                Error = 1;
-                return false;
-            }else if( _this.val() >= _this.attr('minlength') ){
-                _this.closest('.form_builder_row').find('.response').hide();
-                _this.removeClass('border-danger');
-            }else if( _this.val() <  _this.attr('minlength') ){
-                err =  'The '+make_label(_this.prop("id"))+' must be at least '+_this.attr('minlength')+'characters!';
-                _this.closest('.form_builder_row').find('.response').show();
-                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
-                _this.addClass('border-danger');                
-                Error = 1;
-                return false;
-            }else if(the_type =='radio' && $("input[name='"+the_name+"']:checked").length == 1){
-                _this.closest('.form_builder_row').find('.response').hide();
-                _this.removeClass('border-danger');
-            }else if(the_type =='radio' && $("input[name='"+the_name+"']:checked").length == 0){
-                err =   'Please choose '+make_label(_this.prop("id")) ;
-                _this.closest('.form_builder_row').find('.response').show();
-                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
-                _this.addClass('border-danger');                
-                Error = 1;
-                return false;
-            }else if(the_type =='checkbox' && $("input[name='"+the_name+"']:checked").length == 0){
-                _this.closest('.form_builder_row').find('.response').hide();
-                _this.removeClass('border-danger');
-            }else if(the_type =='checkbox' && $("input[name='"+the_name+"']:checked").length == 1){
-                err =  'This field is required!' ;
-                _this.closest('.form_builder_row').find('.response').show();
-                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
-                _this.addClass('border-danger');                
-                Error = 1;
-                return false;
-            }else if(the_type =='email' && isValidEmail(_this.val())==true){
-                _this.closest('.form_builder_row').find('.response').hide();
-                _this.removeClass('border-danger');
-            }else if(the_type =='email' && isValidEmail(_this.val())==false){
-                err =  'Please enter a valid email!' ;
-                _this.closest('.form_builder_row').find('.response').show();
-                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
-                _this.addClass('border-danger');
-                Error = 1;
-                return false;
-            }
-        });//on change
-
-       /* * * * * * * * * * *
-        * HELPER FUNCTIONS  *
-        * * * * * * * * * * */ 
-function handle_error(err, field){
-    field.closest('.form_builder_row').find('.response').show();
-    field.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
-    field.addClass('border-danger');
-    
-    $('html, body').animate({
-                    scrollTop: field.offset().top
-                }, 2000);
-                field.focus();
-    // $('.form_builder_submit').prop('disabled', true);
-    
-}
-
-function remove_error(field){
-    field.closest('.form_builder_row').find('.response').hide();
-    field.removeClass('border-danger');
-    // $('.form_builder_submit').prop('disabled', false);
-}
-    
-function isValidEmail(email) {
-    var EmailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-  return EmailRegex.test(email);
-}
-
-function make_label(target){
-    let object_label = target.replace(/_/g, ' ').replace(/#/g, '');
-    return object_label;
-}
-    </script>
+        <script src="functions.js"></script>
     <?php $html = ob_get_clean();
         echo $html;
     }

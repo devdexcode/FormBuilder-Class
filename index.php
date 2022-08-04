@@ -27,7 +27,7 @@
     'required' => 1,
     'type' => 'text',
     'label_class'=>'the_label',
-    'input_class'=>'the_field',
+    'input_class'=>'the_field no_special_chars',
     'label_col'=>'col-md-2',
     'input_col'=>'col-md-4',
     'min' => 4,
