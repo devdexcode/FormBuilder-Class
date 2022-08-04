@@ -94,86 +94,116 @@ if (in_array($type, $types)) {
     {
         ob_start();?>
     <script>
-(function ($) {
- $(document).ready(function() {
 
-    $('head').append('<style>.description.response{padding: 10px;}</style>');
-
+    /* * * * * * * * * * *
+    * STARTS ON CHANGE  *
+    * * * * * * * * * * */ 
     function form_validator(submit_btn,req_class){
-        $(submit_btn).on('click',function(e){
-        e.preventDefault();
+        // $(submit_btn).on('click',function(e){
+        // e.preventDefault();
         $.each($(req_class),function(){
             let _this    =  $(this);
             let the_type =  _this[0].type;
             // debugger;
             let the_name = _this.attr('name');
             if(_this.val() === ""){
-                handle_error( 'Please fill the '+make_label(_this.prop("id"))  ,_this );
-                Error = 1;
+                handle_error( 'Please provide '+make_label(_this.prop("id"))  ,_this );
+                ValidationError = 1;
                 return false;
-            }else if( _this.val() < _this.attr('minlength') ){
-                handle_error( 'The '+make_label(_this.prop("id"))+' must be at least '+_this.attr('minlength')+'characters!' ,_this);
-                Error = 1;
+            }else if( _this.val().length < _this.attr('minlength') ){ debugger;
+                handle_error( 'The '+make_label(_this.prop("id"))+' must be at least '+_this.attr('minlength')+' characters!' ,_this);
+                ValidationError = 1;
+               
                 return false;
             }else if(the_type =='radio' && $("input[name='"+the_name+"']:checked").length == 0){
-                    handle_error( 'Please choose any '+make_label(_this.prop("name")) ,_this);
-                    Error = 1;
+                    handle_error( 'Please choose '+make_label(_this.prop("name")) ,_this);
+                    ValidationError = 1;
                     return false;
             }else if(the_type =='checkbox' && $("input[name='"+the_name+"']:checked").length == 0){
                 // handle_error( 'Please provide '+make_label(_this.prop("id")) ,_this);
                 handle_error( 'This field is required!' , _this);
-                Error = 1;
+                ValidationError = 1;
                 return false;
             } else if(the_type =='email' && isValidEmail(_this.val())==false){
                 handle_error( 'Please enter a valid email!' ,_this);
-                Error = 1;
+                ValidationError = 1;
                 return false;
             }else{
                 remove_error(_this);
-                Error = 0;
+                ValidationError = 0;
+                console.log('Good to go...');
+                _this.closest('.form_builder_row').find('.response').hide();
+                _this.removeClass('border-danger');
+                // return true;
             }
 
         });//ends each loop
 
-        });//ENDS ON CLICK
+    }//ENDS JQUERY FORM VALIDATION 
 
-        // STARTS ON CHANGE
-        $(req_class).on('change',function(submit_btn){
+
+       /* * * * * * * * * * *
+        * STARTS ON CHANGE  *
+        * * * * * * * * * * */ 
+       $('.form_builder_field.required').on('focusout',function(e){
             let _this    =  $(this);
             if(_this.val() != ""){
-                remove_error(_this);
+                _this.closest('.form_builder_row').find('.response').hide();
+                _this.removeClass('border-danger');
             }else if(_this.val() == ""){
-                handle_error( 'Please provide '+make_label(_this.prop("id"))  ,_this );
+                err = 'Please provide '+make_label(_this.prop("id"))  ;
+                _this.closest('.form_builder_row').find('.response').show();
+                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
+                _this.addClass('border-danger');
+    
                 Error = 1;
                 return false;
             }else if( _this.val() >= _this.attr('minlength') ){
-                remove_error(_this);
+                _this.closest('.form_builder_row').find('.response').hide();
+                _this.removeClass('border-danger');
             }else if( _this.val() <  _this.attr('minlength') ){
-                handle_error( 'The '+make_label(_this.prop("id"))+' must be at least '+_this.attr('minlength')+'characters!' ,_this , submit_btn);
+                err =  'The '+make_label(_this.prop("id"))+' must be at least '+_this.attr('minlength')+'characters!';
+                _this.closest('.form_builder_row').find('.response').show();
+                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
+                _this.addClass('border-danger');                
                 Error = 1;
                 return false;
             }else if(the_type =='radio' && $("input[name='"+the_name+"']:checked").length == 1){
-                remove_error(_this);
+                _this.closest('.form_builder_row').find('.response').hide();
+                _this.removeClass('border-danger');
             }else if(the_type =='radio' && $("input[name='"+the_name+"']:checked").length == 0){
-                handle_error( 'Please choose any '+make_label(_this.prop("id")) ,_this);
+                err =   'Please choose '+make_label(_this.prop("id")) ;
+                _this.closest('.form_builder_row').find('.response').show();
+                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
+                _this.addClass('border-danger');                
                 Error = 1;
                 return false;
             }else if(the_type =='checkbox' && $("input[name='"+the_name+"']:checked").length == 0){
-                remove_error(_this);
+                _this.closest('.form_builder_row').find('.response').hide();
+                _this.removeClass('border-danger');
             }else if(the_type =='checkbox' && $("input[name='"+the_name+"']:checked").length == 1){
-                handle_error( 'This field is required!',_this);
+                err =  'This field is required!' ;
+                _this.closest('.form_builder_row').find('.response').show();
+                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
+                _this.addClass('border-danger');                
                 Error = 1;
                 return false;
             }else if(the_type =='email' && isValidEmail(_this.val())==true){
-                remove_error(_this);
+                _this.closest('.form_builder_row').find('.response').hide();
+                _this.removeClass('border-danger');
             }else if(the_type =='email' && isValidEmail(_this.val())==false){
-                handle_error( 'Please enter a valid email!' ,_this);
+                err =  'Please enter a valid email!' ;
+                _this.closest('.form_builder_row').find('.response').show();
+                _this.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
+                _this.addClass('border-danger');
                 Error = 1;
                 return false;
             }
         });//on change
 
-        //HELPER FUNCTIONS
+       /* * * * * * * * * * *
+        * HELPER FUNCTIONS  *
+        * * * * * * * * * * */ 
 function handle_error(err, field){
     field.closest('.form_builder_row').find('.response').show();
     field.closest('.form_builder_row').find('.response').html(err).addClass('text-danger');
@@ -183,20 +213,16 @@ function handle_error(err, field){
                     scrollTop: field.offset().top
                 }, 2000);
                 field.focus();
-    $('.form_builder_submit').prop('disabled', true);
+    // $('.form_builder_submit').prop('disabled', true);
     
 }
+
 function remove_error(field){
     field.closest('.form_builder_row').find('.response').hide();
     field.removeClass('border-danger');
-    $('.form_builder_submit').prop('disabled', false);
+    // $('.form_builder_submit').prop('disabled', false);
 }
-    }
-
-    form_validator('.form_builder_submit','.form_builder_field.required');
- });
-})(jQuery);
-
+    
 function isValidEmail(email) {
     var EmailRegex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
   return EmailRegex.test(email);

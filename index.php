@@ -31,7 +31,7 @@
     'label_col'=>'col-md-2',
     'input_col'=>'col-md-4',
     'min' => 4,
-    'max' => 5
+    'max' => 9
 )); ?>
 
 <h3>Email</h3>
@@ -218,6 +218,7 @@
  $(document).ready(function() {	
 	$('.form_builder_submit').on('click',function(e){
         e.preventDefault();
+        form_validator('.form_builder_submit','.form_builder_field.required');
         console.log('Clicked!');
     });
  });
