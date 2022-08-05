@@ -1,5 +1,11 @@
 # FormBuilder-Class
 
+         * Class: FormBuilder
+         * Version: 2.4
+         * Date: 2.2: 5 Aug, | 2 Aug, 2022 | v1: 29 Jul, 2022
+         * Description: Creates form fields with jQuery validation.
+         * Fields: 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','kvselect' 'multiselect', 'multiple', 'date','date-special', 'image', 'range', 'submit',
+        
         'type' => 'THE TYPE OF THE FIELD, IF LEFT SHALL ASSUMED input type text<hr/>',
         'name' => 'THE NAME',
         'id' => 'THE ID',
