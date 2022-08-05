@@ -134,11 +134,11 @@
 )); ?>
 <h3>Date</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'event date',
     'required' => 1,
     'type' => 'date',   
+    // 'type' => 'date-special',   
     'label_class'=>'the_label',
     'input_class'=>'the_field',
     'label_col'=>'col-md-2',
@@ -146,7 +146,6 @@
 )); ?>
 <h3>Image Upload</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'your image',
     'required' => 1,
@@ -158,7 +157,6 @@
 )); ?>
 <h3>Range</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'the range',
     'required' => 1,
@@ -169,6 +167,17 @@
     'input_col'=>'col-md-4',
     'min'=>'0',
     'max'=>'100',
+)); ?>
+<h3>Countries</h3>
+<?php $form_builder->field(array(
+    'container_class' => 'row',
+    'label' => 'country',
+    'required' => 1,
+    'type' => 'countries',   
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
 )); ?>
 <h3>Password</h3>
 <?php $form_builder->field(array(

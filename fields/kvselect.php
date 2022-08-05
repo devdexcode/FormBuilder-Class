@@ -1,4 +1,4 @@
-<select class="form_builder_field <?=(@$required != ""?'required':'');?> <?=$input_class != "" ? $input_class:''; ?> <?=$the_id?> input-<?=$type;?> field_<?=$the_id?> form-control" id="<?=$the_id?>" 
+<select class="form_builder_field <?=(@$required != ""?'required':'');?> <?=$input_class != "" ? $input_class:''; ?> <?=$the_id?> input-<?=$type;?> type-select kvselect field_<?=$the_id?> form-control" id="<?=$the_id?>" 
   name="<?=$the_name?>" data-id="<?=$the_name?>">
   <option></option>
 <?php foreach(@$options as $k => $v):?>

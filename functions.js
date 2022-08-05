@@ -13,7 +13,7 @@
                 handle_error( 'Please provide '+make_label(_this.prop("id"))  ,_this );
                 ValidationError = 1;
                 return false;
-            }else if( _this.val().length < _this.attr('minlength') ){ debugger;
+            }else if( _this.val().length < _this.attr('minlength') ){ //debugger;
                 handle_error( 'The '+make_label(_this.prop("id"))+' must be at least '+_this.attr('minlength')+' characters!' ,_this);
                 ValidationError = 1;
                 return false;

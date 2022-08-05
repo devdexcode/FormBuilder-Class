@@ -128,6 +128,8 @@ public function multiselect($name, $id, $dbval = null, $req = null, $values, $de
           </div>
       </div>
 <?php  }
+
+
 /********************|DATE|**********************/
     public function dmy($label,$day,$month,$year, $db_day = null,$db_month = null,$db_year = null, $req = null, $desc = null, $css_class = null) {?>
         <?php if($dbval != ""){ /*$dt = $dbval; $date = date("d M Y", strtotime($dt));*/}?>
