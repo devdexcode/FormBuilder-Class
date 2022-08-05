@@ -92,6 +92,9 @@ class FormBuilder
     {
         ob_start();?>
         <script src="functions.js"></script>
+        <script>
+            $('head').append('<style>.description.response{clear:both !important;}</style>');
+        </script>
     <?php $html = ob_get_clean();
         echo $html;
     }
@@ -124,6 +127,13 @@ class FormBuilder
 <?php $html = ob_get_clean();
         echo $html;
     }
+/*     public function styles()
+    {
+        ob_start();?>
+
+<?php $html = ob_get_clean();
+        echo $html;
+     }*/
 
 }
 ?>
