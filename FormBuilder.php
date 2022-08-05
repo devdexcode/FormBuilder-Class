@@ -28,8 +28,8 @@ class FormBuilder
         'options' => 'THE OPTIONS FOR: radio/select/multiple',
         'for range' => 'min & max: ARE MUST',
         'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload/multiple', //
-        'NOTE:' => ' Want jQuery Validation? just add:  $form_builder = new FormBuilder(); $form_builder->jQuery_validation(); to your footer after jQuery and inside your onclick add: form_validator(".form_builder_submit",".form_builder_field.required"); ',
-        'Available types in version 2.1' => " 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select', 'multiple', 'date', 'image', 'range', 'submit' ",
+        'NOTE:' => ' Want jQuery Validation? just add:  $form_builder = new FormBuilder(); $form_builder->jQuery_validation(); to your footer after jQuery and inside your onclick add: form_validator(".form_builder_submit",".form_builder_field.required"); And added new js classes alpha,numeric,alpha_numeric and alpha_numeric_dash or no_special_chars',
+        'Available types in version 2.3' => " 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','kvselect' 'multiselect', 'multiple', 'date', 'image', 'range', 'submit' ",
     );
 
     public function field($args)
@@ -37,7 +37,7 @@ class FormBuilder
         foreach ($args as $k => $v) {
             $$k = $v;
         }
-        $types = array('text','password', 'textarea', 'email', 'checkbox', 'radio', 'select', 'multiple', 'date', 'image', 'range', 'submit');
+        $types = array('text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','kvselect','multiselect','multiple', 'date', 'image', 'range', 'submit');
 
         if ((!isset($name) || empty($name)) && (!isset($id) || empty($id)) && (!isset($label) || empty($label))) {
             echo "<div class='text-danger form-group row'>Please specify at least one unique identifier! i.e: id,name or label.</div>";

@@ -21,7 +21,6 @@
 <?php $form_builder = new FormBuilder();?>
 <h3>Text</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'Full Name',
     'required' => 1,
@@ -36,7 +35,6 @@
 
 <h3>Email</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'email',
     'required' => 1,
@@ -48,7 +46,6 @@
 )); ?>
 <h3>Textarea</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'message',
     'required' => 1,
@@ -60,7 +57,6 @@
 )); ?>
 <h3>Checkbox</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'agree',
     'required' => 1,
@@ -72,7 +68,6 @@
 )); ?>
 <h3>Radio</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'Gender',
     'required' => 1,
@@ -85,7 +80,6 @@
 )); ?>
 <h3>Select</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'misc',
     'required' => 1,
@@ -96,22 +90,26 @@
     'input_col'=>'col-md-4',
     'options'=> array('lorem','ipsum','dolor','sit','amet')
 )); ?>
-<h3>Select 2</h3>
+<h3>Select 2/ Key Value Select</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'select test',
     'required' => 'yes',
-    'type' => 'select',   
+    'type' => 'kvselect',   
     'label_class'=>'the_label',
     'input_class'=>'the_field',
     'label_col'=>'col-md-2',
     'input_col'=>'col-md-4',
-    'options'=> array('one','two','three','four','five','six')
-)); ?>
+    'options'=> array(
+        '1'=>'one',
+        '2'=>'two',
+        '3'=>'three',
+        '4'=>'four',
+        '5'=>'five',
+        '6'=>'six')
+    )); ?>
 <h3>Multiple</h3>
 <?php $form_builder->field(array(
-    'container_exists' => 'yes',
     'container_class' => 'row',
     'label' => 'the multiple',
     'required' => 1,
@@ -121,6 +119,18 @@
     'label_col'=>'col-md-2',
     'input_col'=>'col-md-4',
     'options'=> array('lorem','ipsum','dolor','sit','amet')
+)); ?>
+<h3>Multiselect</h3>
+<?php $form_builder->field(array(
+    'container_class' => 'row',
+    'name' => 'the_multiselect',
+    'required' => 1,
+    'type' => 'multiselect',   
+    'label_class'=>'the_label',
+    'input_class'=>'the_field',
+    'label_col'=>'col-md-2',
+    'input_col'=>'col-md-4',
+    'options'=> array('1:lorem','2:ipsum','3:dolor','4:sit','5:amet')
 )); ?>
 <h3>Date</h3>
 <?php $form_builder->field(array(
@@ -196,23 +206,6 @@
 
 <?php $form_builder->jQuery_validation();?>       
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-<!-- <script>
-    function validate(obj) {
-        let val =obj.value;
-        submit = document.getElementsByClassName('form_builder_submit');    
-        if(val == ""){
-            alert('please enter '+make_label(obj.name)); 
-            submit[0].setAttribute("disabled", "disabled");
-            event.preventDefault();
-            return false;
-        }else if(val.length <= 2){
-            alert(make_label(obj.name)+' must be at least 3 characters!');
-        }else{
-            alert(obj.type);
-            submit[0].removeAttribute("disabled");
-        }
-    }
-</script> -->
 <script>
     (function ($) {
  $(document).ready(function() {	

@@ -206,6 +206,25 @@ public function select($name, $label, $dbval = null, $req = null, $options=null,
           </div>
       </div>
 <?php  }
+
+
+/********************|SELECT KEY VALUE ARRAY|**********************/
+public function select_key_val($name, $label, $dbval = null, $req = null, $desc = null,$kv_arr, $css_class = null) {?>  
+    <div class="form-group row">
+        <div class="col-md-<?=($this->label_col ==""?'4':$this->label_col);?>"><label class="control-label text-right" for="<?=$name?>"><?= ucfirst($this->clean($label));?><?=($req!=null?'<span class="text-danger">*</span>':'');?></label></div>
+        <div class="col-md-<?=($this->input_col ==""?'8':$this->input_col);?>">
+<select class="form-control <?=($css_class != ""?$css_class:'');?>" id="<?=$name?>" name="<?=$name?>" <?=($req != ""?'required="required"':'');?>>
+  <option value=''>Select</option>
+  <?php  foreach ($kv_arr as $key => $value) {?>
+  <option value='<?=$key?>' <?=($key==$dbval)?"selected='selected'":'';?>><?= ucfirst($value);?></option>
+  <?php     }?>
+</select>
+            <div class="desc"><?=$desc!=""?$desc:'';?></div>
+        </div>
+    </div>
+<?php  }
+
+
 /********************|UPLOAD|**********************/
     public function upload($name, $label, $dbval = null, $req = null, $desc = null, $css_class = null, $val = null/*this'll be new value*/) {?>
       <div class="form-group row">
@@ -220,6 +239,16 @@ public function select($name, $label, $dbval = null, $req = null, $options=null,
           </div>
       </div>
 <?php  }//ends simple upload field
+
+
+
+
+
+
+
+
+
+
 /********************|WORDPRESS COLORPICKER|**********************/
     public function wp_color($name, $label, $dbval = null, $req = null, $desc = null, $css_class = null) {?>  
       <div class="form-group row">
@@ -283,21 +312,19 @@ public function select($name, $label, $dbval = null, $req = null, $options=null,
           </div>
       </div>
 <?php  }//ends wp uploads
-/********************|SELECT KEY VALUE ARRAY|**********************/
-public function select_key_val($name, $label, $dbval = null, $req = null, $desc = null,$kv_arr, $css_class = null) {?>  
-      <div class="form-group row">
-          <div class="col-md-<?=($this->label_col ==""?'4':$this->label_col);?>"><label class="control-label text-right" for="<?=$name?>"><?= ucfirst($this->clean($label));?><?=($req!=null?'<span class="text-danger">*</span>':'');?></label></div>
-          <div class="col-md-<?=($this->input_col ==""?'8':$this->input_col);?>">
- <select class="form-control <?=($css_class != ""?$css_class:'');?>" id="<?=$name?>" name="<?=$name?>" <?=($req != ""?'required="required"':'');?>>
-    <option value=''>Select</option>
-    <?php  foreach ($kv_arr as $key => $value) {?>
-    <option value='<?=$key?>' <?=($key==$dbval)?"selected='selected'":'';?>><?= ucfirst($value);?></option>
-    <?php     }?>
-</select>
-              <div class="desc"><?=$desc!=""?$desc:'';?></div>
-          </div>
-      </div>
-<?php  }
+
+
+
+
+
+
+
+
+
+
+
+
+
 /********************|SELECT WP QUERY|**********************/
 public function select_wpquery($name, $label, $dbval = null, $req = null, $desc = null,$wpquery,$key,$value, $css_class = null) {?>  
       <div class="form-group row">
