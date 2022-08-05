@@ -1,8 +1,8 @@
 <?php
 /* * * *
  * Class: FormBuilder
- * Version: 2.4
- * Date: 2.2: 5 Aug, | 2 Aug, 2022 | v1: 29 Jul, 2022
+ * Version: 2.5
+ * Date: 2.5: 5 Aug, | 2 Aug, 2022 | v1: 29 Jul, 2022
  * Description: Creates form fields with jQuery validation.
  * Fields: 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','countries','kvselect' 'multiselect', 'multiple', 'date','date-special', 'image', 'range', 'submit'
  * * * * */
@@ -29,7 +29,7 @@ class FormBuilder
         'for range' => 'min & max: ARE MUST',
         'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload/multiple', //
         'NOTE:' => ' Want jQuery Validation? just add:  $form_builder = new FormBuilder(); $form_builder->jQuery_validation(); to your footer after jQuery and inside your onclick add: form_validator(".form_builder_submit",".form_builder_field.required"); And added new js classes alpha,numeric,alpha_numeric and alpha_numeric_dash or no_special_chars',
-        'Available types in version 2.4' => " 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','countries','kvselect' 'multiselect', 'multiple', 'date','date-special', 'image', 'range', 'submit' ",
+        'Available types in version 2.5' => " 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','countries','kvselect' 'multiselect', 'multiple', 'date','date-special', 'image', 'range', 'submit' ",
     );
 
     public function field($args)
