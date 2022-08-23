@@ -25,7 +25,7 @@ class FormBuilder
         'options' => 'THE OPTIONS FOR: radio/select/multiple',
         'for range' => 'min & max: ARE MUST',
         'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload/multiple', //
-        'NOTE:' => 'Fixed issue for args id to the_id and name the_name same for label.<br/> Want jQuery Validation? just add:  $form_builder = new FormBuilder(); $form_builder->jQuery_validation(); to your footer after jQuery and inside your onclick add: form_validator(".form_builder_submit",".form_builder_field.required"); And added new js classes alpha,numeric,alpha_numeric and alpha_numeric_dash or no_special_chars',
+        'NOTE:' => 'Fixed button issue for args id to the_id and name the_name same for label.<br/> Want jQuery Validation? just add:  $form_builder = new FormBuilder(); $form_builder->jQuery_validation(); to your footer after jQuery and inside your onclick add: form_validator(".form_builder_submit",".form_builder_field.required"); And added new js classes alpha,numeric,alpha_numeric and alpha_numeric_dash or no_special_chars',
         'Available types in version 4' => "'wp_color', 'wp_upload','text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','countries','kvselect' 'multiselect', 'multiple', 'date','date_special', 'image', 'range', 'submit' ",
     );
 
