@@ -168,7 +168,7 @@ public function email($args){
    data-id="<?=$the_id?>"
   <?=(isset($readonly) && $readonly !="") ? 'readonly="readonly"' : '';?>
   <?=(isset($disabled) && $disabled !="") ? 'disabled="disabled"' : '';?>>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -198,7 +198,7 @@ public function checkbox($args){
   <?php if( @$input_class != "" ) {?>
   </div>
   <?php }?>    
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -224,7 +224,7 @@ public function radio($args){
   <span><?=ucfirst(@$option);?></span>
 </label>
 <?php endforeach;?>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -248,7 +248,7 @@ public function select($args){
     <option value="<?=(@$option);?>" <?php echo (@$dbval == @$option?'selected="selected"':((isset($_REQUEST[@$the_name]) && $_REQUEST[@$the_name]==@$option) ? 'selected="selected"':''));?>><?=ucfirst(@$option);?></option>
 <?php endforeach;?>
 </select>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -272,7 +272,7 @@ public function multiselect($args){
     <option value="<?=(@$option);?>" <?php echo (@$dbval == $option ?'selected="selected"':(isset($_REQUEST[@$the_name]) && in_array($option,$_REQUEST[@$the_name]) ? 'selected="selected"':''));?>><?=ucfirst(@$option);?></option>
 <?php endforeach;?>
 </select>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -299,7 +299,7 @@ public function multiple($args){
   <span><?=ucfirst(@$option);?></span>
   </label>
 <?php endforeach;?>
-<small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+<small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -323,7 +323,7 @@ public function countries($args){
     <option value="<?=(@$country);?>" <?php echo (@$dbval == @$country?'selected="selected"':((isset($_REQUEST[@$the_name]) && $_REQUEST[@$the_name]==@$country) ? 'selected="selected"':''));?>><?=ucfirst(@$country);?></option>
 <?php endforeach;?>
 </select>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -349,7 +349,7 @@ public function password($args){
   minlength="<?=(isset($min) && $min !="") ? $min : '';?>" maxlength="<?=(isset($max) && $max !="") ? $max : '';?>"
   <?=(isset($readonly) && $readonly !="") ? 'readonly="readonly"' : '';?>
   <?=(isset($disabled) && $disabled !="") ? 'disabled="disabled"' : '';?>>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -376,7 +376,7 @@ class="form_builder_field <?=(@$required != ""?'required':'');?> form-control <?
   <?=(isset($readonly) && $readonly !="") ? 'readonly="readonly"' : '';?>
   <?=(isset($disabled) && $disabled !="") ? 'disabled="disabled"' : '';?>>
 </div>
-<small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+<small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -398,7 +398,7 @@ public function kvselect($args){
     <option value="<?=(@$k);?>" <?php echo (@$dbval == @$k?'selected="selected"':((isset($_REQUEST[@$the_name]) && $_REQUEST[@$the_name]==@$k) ? 'selected="selected"':''));?>><?=ucfirst(@$v);?></option>
 <?php endforeach;?>
 </select>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -429,7 +429,7 @@ public function image($args){
     <!-- <button type="button" id="<?=$the_name?>_btn" class="btn btn-info btn-upload">Upload</button> -->
     <img src="<?=(@$dbval != "" ? $dbval : '');?>" id="<?=$the_name?>_preview" class="img-disp pull-right img-thumbnail" style="max-width:90px;display:none;"/>
     <div class="col-sm-12 text-danger" id="<?=$the_name?>_photo_resp"></div>
-    <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+    <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
 </div>
     <?php 
 }
@@ -470,7 +470,7 @@ public function date_special($args){
 })(jQuery);
 </script>    
 </div>
-<small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+<small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -494,7 +494,7 @@ oninput="range_weight_disp.value = <?=$the_name?>.value"
   <?=(isset($readonly) && $readonly !="") ? 'readonly="readonly"' : '';?>
   <?=(isset($disabled) && $disabled !="") ? 'disabled="disabled"' : '';?>>
    <output id="range_weight_disp"><?=$_POST[$the_name];?></output>
-   <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+   <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
 </div>   
     <?php 
 }
@@ -516,7 +516,7 @@ public function color($args){
   data-id="<?=$the_id?>"
   <?=(isset($readonly) && $readonly !="") ? 'readonly="readonly"' : '';?>
   <?=(isset($disabled) && $disabled !="") ? 'disabled="disabled"' : '';?>>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -542,7 +542,7 @@ class=" col-sm-6 form-control <?=isset($type_class) && $type_class!="" ? $type_c
     </div>
 </div>
 
-<small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+<small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
         <script>
 var $ = jQuery;
 jQuery(document).ready(function ($) {
@@ -596,7 +596,7 @@ public function submit($args){
   data-id="<?=$the_id?>"
   <?=(isset($readonly) && $readonly !="") ? 'readonly="readonly"' : '';?>
   <?=(isset($disabled) && $disabled !="") ? 'disabled="disabled"' : '';?>><?=$the_label?></button>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -616,7 +616,7 @@ public function button($args){
   data-id="<?=$the_id?>"
   <?=(isset($readonly) && $readonly !="") ? 'readonly="readonly"' : '';?>
   <?=(isset($disabled) && $disabled !="") ? 'disabled="disabled"' : '';?>><?=$the_label?></button>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
@@ -638,7 +638,7 @@ public function reset($args){
   data-id="<?=$the_id?>"
   <?=(isset($readonly) && $readonly !="") ? 'readonly="readonly"' : '';?>
   <?=(isset($disabled) && $disabled !="") ? 'disabled="disabled"' : '';?>><?=$the_label?></button>
-  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? ucfirst($description) :'';?></small>
+  <small class="description response font-italic text-small text-muted pl-1"> <?php echo  $description !="" ? $description :'';?></small>
     <?php 
 }
 
