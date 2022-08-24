@@ -1,7 +1,7 @@
 <?php
 /* * * *
  * Class: FormBuilder
- * Version: 5.2
+ * Version: 5.3
  * Date: 24 Aug, 2022
  * Description: Creates form fields
  * Fields: 'text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','countries','kvselect' 'multiselect', 'multiple', 'date','date_special', 'image','wp_color', 'wp_upload', 'range', 'submit', 'button', 'reset'
@@ -27,7 +27,7 @@ class FormBuilder
         'options' => 'THE OPTIONS FOR: radio/select/multiple',
         'for range' => 'min & max: ARE MUST',
         'input_class' => 'APPLY COLUMN CLASSES DIRECT TO input EXCEPT ceheckbox/radiobutton/fileupload/multiple', //
-        'NOTE:' => 'Want jQuery Validation? just add:  $form_builder = new FormBuilder(); $form_builder->jQuery_validation(); to your footer after jQuery and inside your onclick add: form_validator(".form_builder_submit",".form_builder_field.required"); And added new js classes alpha,numeric,alpha_numeric and alpha_numeric_dash or no_special_chars',
+        'NOTE:' => 'Want jQuery Validation? just add the $("#signup").validate({ rules:{..... and so on... to your footer after jQuery and your onclick add it, as the jquery validate is already called in the class.', 
         'Available types in this version' => "'wp_color', 'wp_upload','text','password', 'textarea', 'email', 'checkbox', 'radio', 'select','countries','kvselect' 'multiselect', 'multiple', 'date','date_special', 'image', 'range', 'submit', 'button', 'reset' ",
     );
 
